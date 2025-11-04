@@ -33,8 +33,16 @@ function AppContent() {
 
   const deleteConversationMutation = useMutation({
     mutationFn: async (id: string) => {
-      const response = await apiRequest("DELETE", `/api/conversations/${id}`);
-      return response.json();
+      try {
+        const response = await apiRequest("DELETE", `/api/conversations/${id}`);
+        if (!response.ok) {
+          throw new Error('Falha ao deletar conversa');
+        }
+        return response.json();
+      } catch (error) {
+        console.error('Erro ao deletar conversa:', error);
+        throw error;
+      }
     },
     // Exclusão otimista
     onMutate: async (id: string) => {

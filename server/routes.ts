@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { deleteConversationById } from './middleware/conversations';
 import { chatMessageSchema, type Message, type ChatResponse } from "@shared/schema";
 import { z } from "zod";
 
@@ -57,7 +58,9 @@ async function callPublicAI(messages: Array<{ role: string; content: string }>):
   }
 }
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export function setupRoutes(app: Express): Server {
+  // Rota para deletar conversa
+  app.delete('/api/conversations/:id', deleteConversationById);
   app.get("/api/conversations", async (req, res) => {
     try {
       const conversations = await storage.getAllConversations();
