@@ -35,18 +35,12 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
       <div className="max-w-2xl w-full space-y-8">
         <div className="text-center space-y-3">
           <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
-            <svg 
-              viewBox="0 0 400 200" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-full w-full"
+            <img
+              src="/vecna-logo.png"
+              alt="Vecna AI Logo"
+              className="h-full w-full object-contain"
               style={{filter: 'drop-shadow(0 0 15px rgba(255,105,180,0.4))'}}
-            >
-              <rect width="400" height="200" rx="16" fill="#1a1220" />
-              <circle cx="140" cy="100" r="50" fill="#c13b9b" />
-              <rect x="200" y="70" width="140" height="60" rx="12" fill="#2b1a2b" />
-              <path d="M140 60 L160 140 L120 140 Z" fill="#ff3399" />
-            </svg>
+            />
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
           <p className="text-muted-foreground">
