@@ -33,8 +33,8 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
     <div className="flex flex-col items-center justify-center h-full px-4 py-8">
       <div className="max-w-2xl w-full space-y-8">
         <div className="text-center space-y-3">
-          <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-            <Sparkles className="h-8 w-8 text-primary" />
+          <div className="inline-flex h-24 w-24 items-center justify-center">
+            <img src="/vecna-logo.png" alt="Vecna AI" className="h-full w-full object-contain" />
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
           <p className="text-muted-foreground">
@@ -61,6 +61,16 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
               </Card>
             );
           })}
+        </div>
+        <div className="text-center text-sm text-muted-foreground mt-8">
+          <a
+            href="https://github.com/JeanSd1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors"
+          >
+            Desenvolvido por Jean Silva
+          </a>
         </div>
       </div>
     </div>
