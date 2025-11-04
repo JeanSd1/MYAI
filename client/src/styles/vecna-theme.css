@@ -33,8 +33,15 @@
 
 .dark {
   /* Stranger Things inspired dark theme */
-  --background: 260 20% 2%;    /* deep dark, almost black with slight purple tint */
-  --foreground: 0 0% 98%;      /* bright white text for maximum contrast */
+  --background: 260 20% 1%;    /* deeper dark background */
+  --foreground: 0 0% 100%;     /* pure white text */
+  
+  /* Adiciona um gradiente e vinheta sutil ao fundo */
+  background: radial-gradient(
+    circle at center,
+    hsl(260 20% 2%) 0%,
+    hsl(260 20% 1%) 100%
+  );
 
   --card: 260 15% 3%;          /* slightly lighter than background but still very dark */
   --card-foreground: 0 0% 98%;
@@ -75,8 +82,25 @@ img[alt="Vecna AI Logo"] {
 .dark img[alt="Vecna AI Logo"] {
   /* Intense red glow effect in dark mode */
   box-shadow: 
-    0 0 25px rgba(255, 0, 0, 0.4),
-    0 0 45px rgba(255, 0, 0, 0.2),
-    0 0 60px rgba(255, 0, 0, 0.1);
-  filter: brightness(1.1) saturate(1.2);
+    0 0 25px rgba(255, 0, 0, 0.6),
+    0 0 45px rgba(255, 0, 0, 0.4),
+    0 0 60px rgba(255, 0, 0, 0.2),
+    0 0 75px rgba(255, 0, 0, 0.1);
+  filter: brightness(1.2) saturate(1.3);
+}
+
+/* Força a aplicação do tema escuro quando a classe .dark está presente */
+:root.dark {
+  color-scheme: dark;
+  background-color: hsl(260 20% 1%);
+  color: hsl(0 0% 100%);
+}
+
+/* Garante que elementos específicos também recebam o tema escuro */
+.dark .bg-background {
+  background-color: hsl(var(--background));
+}
+
+.dark .text-foreground {
+  color: hsl(var(--foreground));
 }
