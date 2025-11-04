@@ -30,34 +30,23 @@ const suggestedPrompts = [
 ];
 
 export function EmptyState({ onPromptClick }: EmptyStateProps) {
-  const [showImage, setShowImage] = useState(true);
-
   return (
     <div className="flex flex-col items-center justify-center h-full px-4 py-8">
       <div className="max-w-2xl w-full space-y-8">
         <div className="text-center space-y-3">
-                    <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
-            {showImage ? (
-              <img
-                src="/vecna-logo.png"
-                alt="Vecna logo"
-                className="h-full w-full object-contain"
-                style={{ 
-                  filter: 'drop-shadow(0 0 15px rgba(255,105,180,0.4))',
-                  maxWidth: '100%',
-                  objectFit: 'contain'
-                }}
-                onError={() => setShowImage(false)}
-              />
-            ) : (
-              <svg width="240" height="120" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
-                <rect width="240" height="120" rx="8" fill="#1a1220" />
-                <g transform="translate(24,20)">
-                  <circle cx="36" cy="36" r="30" fill="#c13b9b" />
-                  <rect x="80" y="10" width="90" height="40" rx="6" fill="#2b1a2b" />
-                </g>
-              </svg>
-            )}
+          <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
+            <svg 
+              viewBox="0 0 400 200" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-full w-full"
+              style={{filter: 'drop-shadow(0 0 15px rgba(255,105,180,0.4))'}}
+            >
+              <rect width="400" height="200" rx="16" fill="#1a1220" />
+              <circle cx="140" cy="100" r="50" fill="#c13b9b" />
+              <rect x="200" y="70" width="140" height="60" rx="12" fill="#2b1a2b" />
+              <path d="M140 60 L160 140 L120 140 Z" fill="#ff3399" />
+            </svg>
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
           <p className="text-muted-foreground">
