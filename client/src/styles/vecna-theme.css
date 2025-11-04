@@ -33,31 +33,42 @@
 
 .dark {
   /* Stranger Things inspired dark theme */
-  --background: 280 30% 3%;    /* deep void-like purple-black */
-  --foreground: 0 100% 98%;    /* blood-tinted bright text */
+  --background: 260 10% 4%;    /* near-black with cool purple base */
+  --foreground: 330 20% 96%;    /* slightly warm bright text for contrast */
 
-  --card: 280 25% 5%;
-  --card-foreground: 0 100% 98%;
+  --card: 260 10% 6%;
+  --card-foreground: 330 20% 96%;
 
-  --popover: 280 25% 5%;
-  --popover-foreground: 0 100% 98%;
+  --popover: 260 10% 6%;
+  --popover-foreground: 330 20% 96%;
 
-  --primary: 350 100% 40%;     /* blood red */
-  --primary-foreground: 280 30% 3%;
+  /* Primary is a rich blood-red for buttons/links */
+  --primary: 350 95% 48%;     /* blood red */
+  --primary-foreground: 260 10% 6%;
 
-  --secondary: 280 30% 8%;
-  --secondary-foreground: 0 100% 98%;
+  --secondary: 270 20% 10%;
+  --secondary-foreground: 330 20% 96%;
 
-  --muted: 270 15% 12%;
-  --muted-foreground: 300 10% 75%;
+  --muted: 260 12% 10%;
+  --muted-foreground: 300 10% 70%;
 
   --accent: 325 90% 50%;
   --accent-foreground: 270 15% 4%;
 
-  --destructive: 0 90% 45%;
+  --destructive: 350 90% 46%;
   --destructive-foreground: 300 10% 98%;
 
-  --border: 270 15% 15%;
-  --input: 270 15% 10%;
-  --ring: 325 90% 50%;
+  --border: 260 10% 12%;
+  --input: 260 10% 10%;
+  --ring: 350 95% 48%;
+}
+
+/* apply a subtle background gradient and stronger logo glow when dark */
+html.dark body {
+  background: radial-gradient(ellipse at center, rgba(50,8,20,0.35) 0%, rgba(10,6,12,1) 60%), hsl(var(--background));
+}
+
+img[alt="Vecna AI Logo"] {
+  box-shadow: 0 8px 40px rgba(255,20,80,0.25), 0 0 60px rgba(255,20,80,0.12) inset;
+  border-radius: 8px;
 }
