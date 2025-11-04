@@ -64,11 +64,12 @@
 }
 
 /* apply a subtle background gradient and stronger logo glow when dark */
-html.dark body {
-  background: radial-gradient(ellipse at center, rgba(50,8,20,0.35) 0%, rgba(10,6,12,1) 60%), hsl(var(--background));
-}
+/* Remove heavy radial vignette (it made the center too light). Keep a subtle background only. */
+/* Background handled via --background variable; avoid large overlays here. */
 
 img[alt="Vecna AI Logo"] {
-  box-shadow: 0 8px 40px rgba(255,20,80,0.25), 0 0 60px rgba(255,20,80,0.12) inset;
-  border-radius: 8px;
+  /* Softer glow to match the logo without washing out the page */
+  box-shadow: 0 8px 30px rgba(255,20,80,0.14), 0 0 30px rgba(255,20,80,0.08) inset;
+  border-radius: 6px;
+  background-clip: padding-box;
 }
