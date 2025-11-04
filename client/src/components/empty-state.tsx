@@ -36,7 +36,7 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
           <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
             <img
               src="/vecna-logo.png"
-              alt="Vecna AI"
+              alt=""
               className="h-full w-full object-contain"
               style={{ filter: 'drop-shadow(0 0 10px rgba(255,105,180,0.3))' }}
             />

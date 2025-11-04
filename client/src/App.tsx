@@ -98,8 +98,7 @@ function AppContent() {
               <Menu className="h-5 w-5" />
             </SidebarTrigger>
             <div className="flex items-center gap-3">
-              <img src="/vecna-logo.png" alt="Vecna logo" className="h-8 w-20 object-contain" />
-              <h2 className="text-lg font-semibold">Vecna AI</h2>
+              <img src="/vecna-logo.png" alt="" className="h-8 w-20 object-contain" />
             </div>
             <div className="w-10"></div>
           </header>
