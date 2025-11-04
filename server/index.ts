@@ -1,5 +1,16 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
+
+// Carrega variáveis de ambiente a partir de .env em desenvolvimento
+if (process.env.NODE_ENV !== "production") {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require("dotenv").config();
+  } catch (e) {
+    // dotenv pode não estar instalado em ambientes de produção
+    // ou em containers, lidar silenciosamente
+    // console.warn("dotenv not available");
+  }
+}
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
@@ -47,6 +58,9 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // importar rotas apenas após dotenv ter sido carregado para garantir
+  // que `process.env` esteja disponível para módulos que leem variáveis na carga.
+  const { registerRoutes } = await import("./routes");
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -71,11 +85,19 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
+  // `reusePort` is not supported on some platforms (Windows) and causes
+  // `ENOTSUP: operation not supported on socket`. Enable it only on
+  // non-Windows platforms.
+  const listenOptions: Record<string, any> = {
     port,
     host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  };
+
+  if (process.platform !== "win32") {
+    listenOptions.reusePort = true;
+  }
+
+  server.listen(listenOptions, () => {
     log(`serving on port ${port}`);
   });
 })();

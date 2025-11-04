@@ -36,19 +36,32 @@ function AppContent() {
       const response = await apiRequest("DELETE", `/api/conversations/${id}`);
       return response.json();
     },
-    onSuccess: (_, deletedId) => {
-      setConversations((prev) => prev.filter((c) => c.id !== deletedId));
-      if (currentConversationId === deletedId) {
+    // Exclusão otimista
+    onMutate: async (id: string) => {
+      await queryClient.cancelQueries({ queryKey: ["/api/conversations"] });
+      const previous = queryClient.getQueryData<Conversation[]>(["/api/conversations"]);
+      // otimisticamente remover do cache e do estado local
+      queryClient.setQueryData<Conversation[] | undefined>(["/api/conversations"], (old) => old?.filter((c) => c.id !== id));
+      setConversations((prev) => prev.filter((c) => c.id !== id));
+      if (currentConversationId === id) {
         setCurrentConversationId(null);
       }
-      queryClient.invalidateQueries({ queryKey: ["/api/conversations"] });
+      return { previous };
     },
-    onError: (error: Error) => {
+    onError: (error: Error, id: string, context: any) => {
+      // rollback
+      if (context?.previous) {
+        queryClient.setQueryData(["/api/conversations"], context.previous);
+        setConversations(context.previous);
+      }
       toast({
         title: "Erro ao deletar conversa",
         description: error.message || "Tente novamente mais tarde",
         variant: "destructive",
       });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/conversations"] });
     },
   });
 

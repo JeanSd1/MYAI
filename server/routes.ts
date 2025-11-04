@@ -12,6 +12,19 @@ async function callPublicAI(messages: Array<{ role: string; content: string }>):
     throw new Error("PUBLICAI_API_KEY is not configured");
   }
 
+  // Forçar que o modelo responda sempre em Português do Brasil.
+  // Inserimos uma mensagem de sistema no início do histórico para garantir o idioma
+  // independentemente do que o usuário escreveu.
+  const systemMessage = {
+    role: "system",
+    content:
+      "Você é um assistente que deve responder sempre em Português do Brasil (pt-BR).\n" +
+      "Se o usuário escrever em outra língua, responda em Na mesma língua que foi enviada.\n" +
+      "Seja claro, conciso e mantenha um tom amigável.",
+  };
+
+  const finalMessages = [systemMessage, ...messages];
+
   try {
     const response = await fetch(PUBLICAI_API_URL, {
       method: "POST",
@@ -21,7 +34,7 @@ async function callPublicAI(messages: Array<{ role: string; content: string }>):
       },
       body: JSON.stringify({
         model: "swiss-ai/apertus-70b-instruct",
-        messages: messages,
+        messages: finalMessages,
       }),
     });
 
