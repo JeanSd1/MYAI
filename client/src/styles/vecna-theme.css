@@ -114,8 +114,20 @@
 }
 
 /* Inverte o conteúdo de volta para ficar legível */
-.upside-down * {
+/* Inverte todo o conteúdo exceto o menu de tema */
+.upside-down main,
+.upside-down footer,
+.upside-down .chat-container,
+.upside-down .chat-messages,
+.upside-down .chat-input {
   transform: rotate(180deg);
+}
+
+/* Mantém o botão de tema e o dropdown na orientação normal */
+.upside-down [data-testid="button-theme-toggle"],
+.upside-down [role="menu"],
+.upside-down [role="menuitem"] {
+  transform: none !important;
 }
 
 /* Partículas flutuantes do Mundo Invertido */
@@ -161,6 +173,21 @@
   text-shadow: 
     2px 2px 4px rgba(255,0,0,0.5),
     -2px -2px 4px rgba(0,50,255,0.5);
+}
+
+/* Mantém o menu de tema sempre visível e usável */
+.upside-down [data-testid="button-theme-toggle"] {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Garante que o dropdown do tema fique na posição correta */
+.upside-down [role="menu"] {
+  position: absolute;
+  z-index: 1000;
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
 }
 
 /* Estilos específicos para campos de entrada no tema escuro */
