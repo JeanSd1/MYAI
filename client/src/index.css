@@ -4,10 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Força o modo escuro por padrão */
-:root {
-  color-scheme: dark;
-}
+/* Do not force color-scheme here — the ThemeProvider will set the .dark/.light class on <html> */
 
 /* NOTE: Theme variables are consolidated into `vecna-theme.css` to avoid duplication.
    This file intentionally avoids re-declaring the full set of CSS variables so
