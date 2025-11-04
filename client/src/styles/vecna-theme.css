@@ -70,9 +70,94 @@
   --ring: 350 100% 40%;
 }
 
-/* apply a subtle background gradient and stronger logo glow when dark */
-/* Remove heavy radial vignette (it made the center too light). Keep a subtle background only. */
-/* Background handled via --background variable; avoid large overlays here. */
+/* Upside Down Theme */
+.upside-down {
+  --background: 220 70% 2%;    /* deep blue-black */
+  --foreground: 0 0% 98%;      /* off-white text */
+  
+  --card: 220 70% 3%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 220 70% 3%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 0 100% 40%;       /* blood red */
+  --primary-foreground: 220 70% 2%;
+  
+  --secondary: 220 70% 5%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 220 70% 8%;
+  --muted-foreground: 220 70% 60%;
+  
+  --accent: 280 100% 45%;      /* evil purple */
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 100% 35%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 220 70% 8%;
+  --input: 220 70% 5%;
+  --ring: 0 100% 40%;
+
+  /* Inverte a página */
+  transform: rotate(180deg);
+  
+  /* Fundo especial do Mundo Invertido */
+  background: 
+    linear-gradient(0deg, rgba(20,20,40,0.95), rgba(20,20,40,0.98)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Inverte o conteúdo de volta para ficar legível */
+.upside-down * {
+  transform: rotate(180deg);
+}
+
+/* Partículas flutuantes do Mundo Invertido */
+.upside-down::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255,0,0,0.1) 0%, transparent 10%),
+    radial-gradient(circle at 30% 70%, rgba(255,0,0,0.1) 0%, transparent 10%);
+  animation: float 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-100px) translateX(50px); }
+  100% { transform: translateY(0); }
+}
+
+/* Logo especial para o Mundo Invertido */
+.upside-down img[alt="Vecna AI Logo"] {
+  filter: hue-rotate(180deg) saturate(1.5) brightness(1.2);
+  box-shadow: 
+    0 0 30px rgba(0, 50, 255, 0.6),
+    0 0 50px rgba(255, 0, 0, 0.4),
+    0 0 70px rgba(0, 50, 255, 0.2);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { filter: hue-rotate(180deg) saturate(1.5) brightness(1.2); }
+  50% { filter: hue-rotate(220deg) saturate(2) brightness(1.4); }
+  100% { filter: hue-rotate(180deg) saturate(1.5) brightness(1.2); }
+}
+
+/* Textos com efeito de distorção */
+.upside-down .text-foreground {
+  text-shadow: 
+    2px 2px 4px rgba(255,0,0,0.5),
+    -2px -2px 4px rgba(0,50,255,0.5);
+}
 
 img[alt="Vecna AI Logo"] {
   border-radius: 6px;
