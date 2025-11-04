@@ -33,8 +33,8 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
     <div className="flex flex-col items-center justify-center h-full px-4 py-8">
       <div className="max-w-2xl w-full space-y-8">
         <div className="text-center space-y-3">
-          <div className="inline-flex h-24 w-24 items-center justify-center">
-            <img src="/vecna-logo.png" alt="Vecna AI" className="h-full w-full object-contain" />
+          <div className="inline-flex h-32 w-64 items-center justify-center mb-4">
+            <img src="/vecna-logo.png" alt="Vecna AI" className="h-full w-full object-contain dark:opacity-90" />
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
           <p className="text-muted-foreground">
