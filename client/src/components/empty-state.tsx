@@ -1,5 +1,6 @@
 import { Sparkles, Lightbulb, Code, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useState } from "react";
 
 interface EmptyStateProps {
   onPromptClick: (prompt: string) => void;
@@ -29,25 +30,34 @@ const suggestedPrompts = [
 ];
 
 export function EmptyState({ onPromptClick }: EmptyStateProps) {
+  const [showImage, setShowImage] = useState(true);
+
   return (
     <div className="flex flex-col items-center justify-center h-full px-4 py-8">
       <div className="max-w-2xl w-full space-y-8">
         <div className="text-center space-y-3">
                     <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAPoCAAAAAAGzNsaAAACXBIWXMAAAsTAAALEwEAmpwYAAAF4WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMi1jMDAwIDc5LjFiNWE3OWI0LCAyMDIyLzA2LzE0LTIyOjA0OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI0LjAgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDI0LTAxLTMwVDEzOjU0OjQyLTAzOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDI0LTAxLTMwVDEzOjU0OjQyLTAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNC0wMS0zMFQxMzo1NDo0Mi0wMzowMCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1NmY2OWJkMi0xYWU4LTQ2NGQtYTJkNi02NWYzNmYyOTE1M2MiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo1NmY2OWJkMi0xYWU4LTQ2NGQtYTJkNi02NWYzNmYyOTE1M2MiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NmY2OWJkMi0xYWU4LTQ2NGQtYTJkNi02NWYzNmYyOTE1M2MiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjU2ZjY5YmQyLTFhZTgtNDY0ZC1hMmQ2LTY1ZjM2ZjI5MTUzYyIgc3RFdnQ6d2hlbj0iMjAyNC0wMS0zMFQxMzo1NDo0Mi0wMzowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDI0LjAgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+7B6TuQAAIABJREFUeJzs3Xl4VOd5N/7vM6MZjUYLEAIhsSGBBYgxNsYvjhcYOzHSJG3SNHWceGmTNG2atOmv6a9p06Rpk6RpmzRx4jt2EjuJbWxsYNYZFmEQAi0grWPPOed9/yDPe+wBMhkZ57nnPt/r4uICuc65z5nBJz73fd/3IZEcRxAEQRAEQRAEb8h8H4AgCIIgCIIgCIII6IIgCIIgCIIgJAIR0AVBEARBEARBEAJEQBcEQRAEQRAEQUgAIqALgiAIgiAIgiAkABHQBUEQRAEQBAEQEoAI6IIgCIIgCIIgCAlABHRBEARBEARBEIQEIAK6IAiCIAiCIAhCAhABXRAEQRAEQRAEIQGIgC4IgiAIgiAIgpAARkjnyWv7MiPTipZ+ZRTWYPB4XRw1IA=="
-              alt=""
-              className="h-full w-full object-contain"
-              style={{ 
-                filter: 'drop-shadow(0 0 15px rgba(255,105,180,0.4))',
-                maxWidth: '100%',
-                objectFit: 'contain'
-              }}
-              onError={(e) => {
-                console.error('Error loading image');
-                e.currentTarget.src = 'vecna-logo.png';
-              }}
-            />
+            {showImage ? (
+              <img
+                src="/vecna-logo.png"
+                alt="Vecna logo"
+                className="h-full w-full object-contain"
+                style={{ 
+                  filter: 'drop-shadow(0 0 15px rgba(255,105,180,0.4))',
+                  maxWidth: '100%',
+                  objectFit: 'contain'
+                }}
+                onError={() => setShowImage(false)}
+              />
+            ) : (
+              <svg width="240" height="120" viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full">
+                <rect width="240" height="120" rx="8" fill="#1a1220" />
+                <g transform="translate(24,20)">
+                  <circle cx="36" cy="36" r="30" fill="#c13b9b" />
+                  <rect x="80" y="10" width="90" height="40" rx="6" fill="#2b1a2b" />
+                </g>
+              </svg>
+            )}
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
           <p className="text-muted-foreground">
