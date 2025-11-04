@@ -36,10 +36,14 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
         <div className="text-center space-y-3">
           <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
             <img
-              src="/vecna-logo.png"
+              src="vecna-logo.png"
               alt="Vecna AI Logo"
               className="h-full w-full object-contain"
               style={{filter: 'drop-shadow(0 0 15px rgba(255,105,180,0.4))'}}
+              onError={(e) => {
+                console.error('Erro ao carregar o logo:', e);
+                e.currentTarget.src = 'vecna-logo.png';
+              }}
             />
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
