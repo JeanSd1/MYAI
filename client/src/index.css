@@ -151,21 +151,22 @@
 
   --card-border: 0 0% 15%;
 
-  --sidebar: 0 0% 14%;
+  /* Sidebar colors - tuned to Vecna / Stranger Things vibe (deep purple instead of flat black) */
+  --sidebar: 280 20% 8%; /* deep purple background */
 
   --sidebar-foreground: 0 0% 98%;
 
-  --sidebar-border: 0 0% 18%;
+  --sidebar-border: 280 18% 12%;
 
-  --sidebar-primary: 212 100% 48%;
+  --sidebar-primary: 345 85% 38%; /* magenta/pink accent */
 
   --sidebar-primary-foreground: 0 0% 98%;
 
-  --sidebar-accent: 0 0% 18%;
+  --sidebar-accent: 280 20% 12%; /* subtle purple accent */
 
   --sidebar-accent-foreground: 0 0% 98%;
 
-  --sidebar-ring: 212 100% 58%;
+  --sidebar-ring: 345 85% 48%;
 
   --popover: 0 0% 16%;
 
