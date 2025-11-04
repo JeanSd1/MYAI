@@ -130,9 +130,19 @@ export function AppSidebar({
       </AlertDialog>
 
       <SidebarFooter className="border-t p-4">
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">Tema</span>
-          <ThemeToggle />
+        <div className="flex flex-col gap-2">
+          <a
+            href="https://github.com/JeanSd1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-primary hover:underline"
+          >
+            @JeanSd1
+          </a>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Tema</span>
+            <ThemeToggle />
+          </div>
         </div>
       </SidebarFooter>
     </Sidebar>

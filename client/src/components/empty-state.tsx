@@ -34,15 +34,11 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
       <div className="max-w-2xl w-full space-y-8">
         <div className="text-center space-y-3">
           <div className="inline-flex h-48 w-96 items-center justify-center mb-8">
-            <img 
-              src="./vecna-logo.png" 
-              alt="Vecna AI" 
-              className="h-full w-full object-contain" 
-              style={{filter: 'drop-shadow(0 0 10px rgba(255,105,180,0.3))'}}
-              onError={(e) => {
-                console.error('Erro ao carregar a imagem:', e);
-                e.currentTarget.src = './public/vecna-logo.png';
-              }}
+            <img
+              src="/vecna-logo.png"
+              alt="Vecna AI"
+              className="h-full w-full object-contain"
+              style={{ filter: 'drop-shadow(0 0 10px rgba(255,105,180,0.3))' }}
             />
           </div>
           <h1 className="text-2xl font-semibold">Como posso ajudar você hoje?</h1>
@@ -71,16 +67,7 @@ export function EmptyState({ onPromptClick }: EmptyStateProps) {
             );
           })}
         </div>
-        <div className="text-center text-sm text-muted-foreground mt-8">
-          <a
-            href="https://github.com/JeanSd1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary transition-colors"
-          >
-            Desenvolvedor: <a href="https://github.com/JeanSd1" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@JeanSd1</a>
-          </a>
-        </div>
+        
       </div>
     </div>
   );
