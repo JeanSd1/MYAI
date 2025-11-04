@@ -6,6 +6,7 @@ interface ChatContextType {
   setConversations: React.Dispatch<React.SetStateAction<Conversation[]>>;
   currentConversationId: string | null;
   setCurrentConversationId: React.Dispatch<React.SetStateAction<string | null>>;
+  deleteConversation: (id: string) => Promise<boolean>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -14,6 +15,26 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null);
 
+  const deleteConversation = async (id: string): Promise<boolean> => {
+    try {
+      const response = await fetch(`/api/conversations/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        setConversations(prev => prev.filter(conv => conv.id !== id));
+        if (currentConversationId === id) {
+          setCurrentConversationId(null);
+        }
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error deleting conversation:', error);
+      return false;
+    }
+  };
+
   return (
     <ChatContext.Provider
       value={{
@@ -21,6 +42,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         setConversations,
         currentConversationId,
         setCurrentConversationId,
+        deleteConversation,
       }}
     >
       {children}

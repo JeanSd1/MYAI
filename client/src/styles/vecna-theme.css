@@ -33,19 +33,19 @@
 
 .dark {
   /* Somber Vecna theme inspired by dark purple and magenta */
-  --background: 270 15% 4%;    /* very dark purple-black */
+  --background: 270 20% 2%;    /* deeper purple-black */
   --foreground: 300 10% 98%;   /* bright text */
 
-  --card: 270 15% 6%;
+  --card: 270 20% 4%;
   --card-foreground: 300 10% 98%;
 
-  --popover: 270 15% 7%;
+  --popover: 270 20% 5%;
   --popover-foreground: 300 10% 98%;
 
-  --primary: 325 90% 50%;      /* deep magenta */
-  --primary-foreground: 270 15% 4%;
+  --primary: 325 100% 45%;     /* richer magenta */
+  --primary-foreground: 270 20% 2%;
 
-  --secondary: 270 15% 10%;
+  --secondary: 270 20% 8%;
   --secondary-foreground: 300 10% 98%;
 
   --muted: 270 15% 12%;
