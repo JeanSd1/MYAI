@@ -33,34 +33,34 @@
 
 .dark {
   /* Stranger Things inspired dark theme */
-  --background: 260 10% 4%;    /* near-black with cool purple base */
-  --foreground: 330 20% 96%;    /* slightly warm bright text for contrast */
+  --background: 260 20% 2%;    /* deep dark, almost black with slight purple tint */
+  --foreground: 0 0% 98%;      /* bright white text for maximum contrast */
 
-  --card: 260 10% 6%;
-  --card-foreground: 330 20% 96%;
+  --card: 260 15% 3%;          /* slightly lighter than background but still very dark */
+  --card-foreground: 0 0% 98%;
 
-  --popover: 260 10% 6%;
-  --popover-foreground: 330 20% 96%;
+  --popover: 260 15% 3%;
+  --popover-foreground: 0 0% 98%;
 
-  /* Primary is a rich blood-red for buttons/links */
-  --primary: 350 95% 48%;     /* blood red */
-  --primary-foreground: 260 10% 6%;
+  /* Primary color is now a deep blood red */
+  --primary: 350 100% 40%;     /* intense blood red */
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 270 20% 10%;
-  --secondary-foreground: 330 20% 96%;
+  --secondary: 260 20% 5%;     /* very dark purple */
+  --secondary-foreground: 0 0% 98%;
 
-  --muted: 260 12% 10%;
-  --muted-foreground: 300 10% 70%;
+  --muted: 260 15% 8%;
+  --muted-foreground: 260 10% 60%;
 
-  --accent: 325 90% 50%;
-  --accent-foreground: 270 15% 4%;
+  --accent: 325 100% 38%;      /* deep magenta for accents */
+  --accent-foreground: 0 0% 100%;
 
-  --destructive: 350 90% 46%;
-  --destructive-foreground: 300 10% 98%;
+  --destructive: 0 100% 35%;   /* darker blood red */
+  --destructive-foreground: 0 0% 98%;
 
-  --border: 260 10% 12%;
-  --input: 260 10% 10%;
-  --ring: 350 95% 48%;
+  --border: 260 20% 8%;
+  --input: 260 15% 5%;
+  --ring: 350 100% 40%;
 }
 
 /* apply a subtle background gradient and stronger logo glow when dark */
@@ -68,8 +68,15 @@
 /* Background handled via --background variable; avoid large overlays here. */
 
 img[alt="Vecna AI Logo"] {
-  /* Softer glow to match the logo without washing out the page */
-  box-shadow: 0 8px 30px rgba(255,20,80,0.14), 0 0 30px rgba(255,20,80,0.08) inset;
   border-radius: 6px;
   background-clip: padding-box;
+}
+
+.dark img[alt="Vecna AI Logo"] {
+  /* Intense red glow effect in dark mode */
+  box-shadow: 
+    0 0 25px rgba(255, 0, 0, 0.4),
+    0 0 45px rgba(255, 0, 0, 0.2),
+    0 0 60px rgba(255, 0, 0, 0.1);
+  filter: brightness(1.1) saturate(1.2);
 }
