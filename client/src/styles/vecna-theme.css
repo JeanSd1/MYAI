@@ -114,13 +114,32 @@
 }
 
 /* Inverte o conteúdo de volta para ficar legível */
-/* Inverte todo o conteúdo exceto o menu de tema */
-.upside-down main,
-.upside-down footer,
-.upside-down .chat-container,
-.upside-down .chat-messages,
-.upside-down .chat-input {
+/* Define áreas específicas para inversão no modo Mundo Invertido */
+.upside-down .flex.flex-col.flex-1.w-full {
   transform: rotate(180deg);
+  height: 100vh;
+  position: relative;
+}
+
+/* Mantém a sidebar e o header na orientação normal */
+.upside-down header,
+.upside-down nav,
+.upside-down [data-testid="app-sidebar"] {
+  transform: rotate(0deg) !important;
+}
+
+/* Inverte apenas a área de chat */
+.upside-down .chat-messages {
+  transform: rotate(180deg);
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Mantém a área de input na orientação correta */
+.upside-down .chat-input {
+  transform: rotate(0deg) !important;
+  position: relative;
+  z-index: 10;
 }
 
 /* Mantém o botão de tema e o dropdown na orientação normal */
@@ -181,13 +200,36 @@
   z-index: 1000;
 }
 
-/* Garante que o dropdown do tema fique na posição correta */
-.upside-down [role="menu"] {
+/* Garante que elementos de UI fiquem na posição correta */
+.upside-down [role="menu"],
+.upside-down .dropdown-content,
+.upside-down .popover-content,
+.upside-down .dialog-content {
   position: absolute;
   z-index: 1000;
+  transform: rotate(0deg) !important;
   background: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* Ajustes específicos para mensagens no chat */
+.upside-down .chat-message {
+  transform: rotate(180deg);
+}
+
+/* Mantém os botões e controles na orientação correta */
+.upside-down button,
+.upside-down .button,
+.upside-down input,
+.upside-down textarea {
+  transform: rotate(0deg) !important;
+}
+
+/* Ajuste para o layout principal */
+.upside-down .flex.h-screen.w-full {
+  position: relative;
+  overflow: hidden;
 }
 
 /* Estilos específicos para campos de entrada no tema escuro */
