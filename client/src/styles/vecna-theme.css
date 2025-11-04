@@ -36,6 +36,10 @@
   --background: 260 20% 1%;    /* deeper dark background */
   --foreground: 0 0% 100%;     /* pure white text */
   
+  /* Garantir que o texto de entrada seja visível */
+  --input-text: 0 0% 100%;     /* texto branco para campos de entrada */
+  --input-placeholder: 0 0% 70%;  /* placeholder em cinza claro */
+  
   /* Adiciona um gradiente e vinheta sutil ao fundo */
   background: radial-gradient(
     circle at center,
@@ -157,6 +161,31 @@
   text-shadow: 
     2px 2px 4px rgba(255,0,0,0.5),
     -2px -2px 4px rgba(0,50,255,0.5);
+}
+
+/* Estilos específicos para campos de entrada no tema escuro */
+.dark textarea,
+.dark input[type="text"],
+.dark input[type="search"],
+.dark [contenteditable="true"] {
+  color: hsl(var(--input-text)) !important;
+  background-color: hsl(var(--background));
+  border-color: hsl(var(--border));
+}
+
+.dark textarea::placeholder,
+.dark input::placeholder,
+.dark [contenteditable="true"][data-placeholder]::before {
+  color: hsl(var(--input-placeholder)) !important;
+  opacity: 0.7;
+}
+
+/* Efeito sutil de brilho no foco */
+.dark textarea:focus,
+.dark input:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.3);
+  background-color: hsl(var(--background));
 }
 
 img[alt="Vecna AI Logo"] {
