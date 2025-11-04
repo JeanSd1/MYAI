@@ -97,9 +97,7 @@ function AppContent() {
             <SidebarTrigger data-testid="button-sidebar-toggle">
               <Menu className="h-5 w-5" />
             </SidebarTrigger>
-            <div className="flex items-center gap-3">
-              <img src="/vecna-logo.png" alt="" className="h-8 w-20 object-contain" />
-            </div>
+            <div className="flex-1"></div>
             <div className="w-10"></div>
           </header>
           <main className="flex-1 overflow-hidden">
