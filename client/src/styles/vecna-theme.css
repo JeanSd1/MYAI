@@ -32,32 +32,32 @@
 }
 
 .dark {
-  /* Deep dark background with purple/pink accents */
-  --background: 260 8% 6%;    /* near black with cool tone */
-  --foreground: 330 10% 96%;  /* light text */
+  /* Somber Vecna theme inspired by dark purple and magenta */
+  --background: 270 15% 4%;    /* very dark purple-black */
+  --foreground: 300 10% 98%;   /* bright text */
 
-  --card: 260 10% 8%;
-  --card-foreground: 330 10% 96%;
+  --card: 270 15% 6%;
+  --card-foreground: 300 10% 98%;
 
-  --popover: 260 10% 9%;
-  --popover-foreground: 330 10% 96%;
+  --popover: 270 15% 7%;
+  --popover-foreground: 300 10% 98%;
 
-  --primary: 300 85% 55%;    /* vivid magenta */
-  --primary-foreground: 260 8% 6%;
+  --primary: 325 90% 50%;      /* deep magenta */
+  --primary-foreground: 270 15% 4%;
 
-  --secondary: 260 10% 12%;
-  --secondary-foreground: 330 10% 96%;
+  --secondary: 270 15% 10%;
+  --secondary-foreground: 300 10% 98%;
 
-  --muted: 260 10% 14%;
-  --muted-foreground: 330 10% 70%;
+  --muted: 270 15% 12%;
+  --muted-foreground: 300 10% 75%;
 
-  --accent: 300 85% 55%;
-  --accent-foreground: 260 8% 6%;
+  --accent: 325 90% 50%;
+  --accent-foreground: 270 15% 4%;
 
-  --destructive: 350 80% 50%;
-  --destructive-foreground: 330 10% 96%;
+  --destructive: 0 90% 45%;
+  --destructive-foreground: 300 10% 98%;
 
-  --border: 260 10% 18%;
-  --input: 260 10% 12%;
-  --ring: 300 85% 50%;
+  --border: 270 15% 15%;
+  --input: 270 15% 10%;
+  --ring: 325 90% 50%;
 }
