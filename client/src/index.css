@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Força o modo escuro por padrão */
+:root {
+  color-scheme: dark;
+}
+
 /* LIGHT MODE */
 :root {
   --button-outline: rgba(0,0,0, .10);
