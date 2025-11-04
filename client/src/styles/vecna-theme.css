@@ -19,34 +19,34 @@
     --muted: 260 10% 92%;
     --muted-foreground: 260 8% 55%;
 
-    --accent: 300 85% 45%;
+    --accent: 350 100% 40%;    /* match primary blood red */
     --accent-foreground: 270 12% 6%;
 
-    --destructive: 350 80% 50%;
+    --destructive: 0 100% 45%; /* darker blood red for destructive actions */
     --destructive-foreground: 260 10% 96%;
 
-    --border: 260 10% 85%;
-    --input: 260 10% 92%;
-    --ring: 300 85% 50%;
+    --border: 280 30% 15%;     /* slightly visible borders */
+    --input: 280 25% 10%;      /* darker inputs */
+    --ring: 350 100% 40%;      /* blood red ring focus */
   }
 }
 
 .dark {
-  /* Somber Vecna theme inspired by dark purple and magenta */
-  --background: 270 20% 2%;    /* deeper purple-black */
-  --foreground: 300 10% 98%;   /* bright text */
+  /* Stranger Things inspired dark theme */
+  --background: 280 30% 3%;    /* deep void-like purple-black */
+  --foreground: 0 100% 98%;    /* blood-tinted bright text */
 
-  --card: 270 20% 4%;
-  --card-foreground: 300 10% 98%;
+  --card: 280 25% 5%;
+  --card-foreground: 0 100% 98%;
 
-  --popover: 270 20% 5%;
-  --popover-foreground: 300 10% 98%;
+  --popover: 280 25% 5%;
+  --popover-foreground: 0 100% 98%;
 
-  --primary: 325 100% 45%;     /* richer magenta */
-  --primary-foreground: 270 20% 2%;
+  --primary: 350 100% 40%;     /* blood red */
+  --primary-foreground: 280 30% 3%;
 
-  --secondary: 270 20% 8%;
-  --secondary-foreground: 300 10% 98%;
+  --secondary: 280 30% 8%;
+  --secondary-foreground: 0 100% 98%;
 
   --muted: 270 15% 12%;
   --muted-foreground: 300 10% 75%;
